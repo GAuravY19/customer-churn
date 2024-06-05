@@ -48,6 +48,8 @@ class DataClean:
 
             logging.info("cleaning Age column Completed.")
 
+            return self.data_1
+
         except Exception as e:
             logging.info("cleaning Age column Completed.")
             raise CustomException(e, sys)
@@ -92,6 +94,7 @@ class DataClean:
 
             logging.info('cleaning children column completed.')
 
+
         except Exception as e:
             logging.info('cleaning children column failed.')
             raise CustomException(e, sys)
@@ -109,8 +112,8 @@ class DataClean:
             mean_claim_amt = self.data_3['Claim_Amount'].mean()
             self.data_3['Claim_Amount'].fillna(round(mean_claim_amt, 2), inplace = True)
 
-            threshold_max = 4500
-            threshold_min = 61000
+            threshold_max = 61000
+            threshold_min = 4500
 
             self.data_4 = self.data_3[self.data_3['Claim_Amount'] < threshold_max]
             self.data_5 = self.data_4[self.data_4['Claim_Amount'] > threshold_min]
@@ -143,7 +146,7 @@ class DataClean:
             raise CustomException(e, sys)
 
 
-    def step_07_annaul_sal(self):
+    def step_07_annaul_sal(self) -> pd.DataFrame:
         """
             This method fills nan values and removes the outliers in annual salary column.
         """
@@ -158,6 +161,8 @@ class DataClean:
             self.data_7 = self.data_6[self.data_6['Anual_Salary'] < threshold_max]
 
             logging.info("Cleaning Annaul salary column completed.")
+
+            return self.data_7
 
         except Exception as e:
             logging.info("Cleaning Annaul salary column failed.")
