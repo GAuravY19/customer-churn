@@ -13,7 +13,7 @@ from math import ceil
 class DataClean:
     logging.info("Inside data cleaning class.")
 
-    def __init__(self, df):
+    def __init__(self, df:pd.DataFrame):
         logging.info("Data cleaning Class Initialized.")
         self.data = df
 
@@ -43,12 +43,11 @@ class DataClean:
         try:
             logging.info("cleaning Age column started.")
 
-            mean_age = self.data_1['age'].mean()
-            self.data_1['age'].fillna(round(mean_age, 2), inplace=True)
+            if self.data_1['age'].isnull().any():
+                mean_age = self.data_1['age'].mean()
+                self.data_1['age'].fillna(round(mean_age, 2), inplace=True)
 
             logging.info("cleaning Age column Completed.")
-
-            return self.data_1
 
         except Exception as e:
             logging.info("cleaning Age column Completed.")
@@ -64,8 +63,9 @@ class DataClean:
         try:
             logging.info("Cleaning bmi column started.")
 
-            mean_bmi = self.data_1['bmi'].mean()
-            self.data_1['bmi'].fillna(round(mean_bmi, 2), inplace=True)
+            if self.data_1['bmi'].isnull().any():
+                mean_bmi = self.data_1['bmi'].mean()
+                self.data_1['bmi'].fillna(round(mean_bmi, 2), inplace=True)
 
             threshold_max = 45
             threshold_min = 18.5
@@ -89,11 +89,11 @@ class DataClean:
         try:
             logging.info('cleaning children column started.')
 
-            mode_children = self.data_3['children'].mode()
-            self.data_3['children'].fillna(ceil(mode_children), inplace = True)
+            if self.data_3['children'].isnull().any():
+                mode_children = self.data_3['children'].mode()
+                self.data_3['children'].fillna(ceil(mode_children), inplace = True)
 
             logging.info('cleaning children column completed.')
-
 
         except Exception as e:
             logging.info('cleaning children column failed.')
@@ -109,8 +109,9 @@ class DataClean:
         try:
             logging.info('cleaning clain amount column started.')
 
-            mean_claim_amt = self.data_3['Claim_Amount'].mean()
-            self.data_3['Claim_Amount'].fillna(round(mean_claim_amt, 2), inplace = True)
+            if self.data_3['Claim_Amount'].isnull().any():
+                mean_claim_amt = self.data_3['Claim_Amount'].mean()
+                self.data_3['Claim_Amount'].fillna(round(mean_claim_amt, 2), inplace = True)
 
             threshold_max = 61000
             threshold_min = 4500
@@ -133,8 +134,9 @@ class DataClean:
         try:
             logging.info("cleaning hospital expenditure column started.")
 
-            mean_hos_expend = self.data_5['Hospital_expenditure'].mean()
-            self.data_5['Hospital_expenditure'].fillna(round(mean_hos_expend, 2), inplace=True)
+            if self.data_5['Hospital_expenditure'].isnull().any():
+                mean_hos_expend = self.data_5['Hospital_expenditure'].mean()
+                self.data_5['Hospital_expenditure'].fillna(round(mean_hos_expend, 2), inplace=True)
 
             threshold_max = 60000000
             self.data_6 = self.data_5[self.data_5['Hospital_expenditure'] < threshold_max]
@@ -154,8 +156,9 @@ class DataClean:
         try:
             logging.info("Cleaning Annaul salary column started.")
 
-            mean_sal = self.data_6['Anual_Salary'].mean()
-            self.data_6['Anual_Salary'].fillna(round(mean_sal,2), inplace=True)
+            if self.data_6['Anual_Salary'].isnull().any():
+                mean_sal = self.data_6['Anual_Salary'].mean()
+                self.data_6['Anual_Salary'].fillna(round(mean_sal,2), inplace=True)
 
             threshold_max = 750000000
             self.data_7 = self.data_6[self.data_6['Anual_Salary'] < threshold_max]
