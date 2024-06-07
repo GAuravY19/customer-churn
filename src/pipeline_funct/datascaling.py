@@ -262,6 +262,9 @@ class DataScaling:
             final_region_df = pd.DataFrame(region_df, columns=final_features)
 
             self.data_1 = pd.concat([self.data, final_region_df], axis='columns')
+
+            self.data_1.rename(columns={'charges':'target'}, inplace=True)
+
             self.data_2 = self.data_1.drop(['region'], axis='columns')
             self.data_3 = self.data_2[['age','sex','bmi','children','smoker',
                                        'Claim_Amount','Hospital_expenditure',
@@ -270,6 +273,8 @@ class DataScaling:
                                        'southwest','target']]
 
             logging.info("Scaling of region column Completed.")
+
+            return self.data_3
 
         except Exception as e:
             logging.info("Scaling of region column failed.")

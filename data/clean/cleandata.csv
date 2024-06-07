@@ -1,4 +1,4 @@
-age,sex,bmi,children,smoker,Claim_Amount,Hospital_expenditure,NUmber_of_past_hospitalizations,Anual_Salary,region,target
+age,sex,bmi,children,smoker,Claim_Amount,Hospital_expenditure,NUmber_of_past_hospitalizations,Anual_Salary,region,charges
 45.0,male,28.7,2.0,no,32993.77432,8640894.651,1.0,94365914.21,southwest,8027.968
 64.0,male,34.5,0.0,no,38448.37757,11022389.35,1.0,230021898.8,southwest,13822.803
 19.0,female,32.11,0.0,no,50778.14448,1642625.799,0.0,46443494.79,northwest,2130.6759
