@@ -8,3 +8,4 @@ flask
 notebook
 chardet
 tqdm
+flask-wtf
