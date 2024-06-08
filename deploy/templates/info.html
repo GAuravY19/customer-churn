@@ -1,0 +1,78 @@
+{% extends "index.html" %}
+
+{% block title %} Provide Details {% endblock %}
+
+{% block body %}
+
+<div class='content-section form-box'>
+
+    <form method='post' action='/'>
+        {{ form.hidden_tag() }}
+
+        <fieldset class='form-group'>
+            <legend class='border-bottom mb-4 legend-style'> Provide Your Details </legend>
+
+            <div class='form-group'>
+                {{form.Age.label(class='form-control-label label-size')}}
+                {{form.Age(class='form-control form-control-lg input-box-space')}}
+            </div>
+
+            <div class='form-group'>
+                {{form.Gender.label(class='form-control-label label-size')}}
+                {{form.Gender(class='form-control form-control-lg input-box-space')}}
+            </div>
+
+            <div class='form-group'>
+                {{form.BMI.label(class='form-control-label label-size')}}
+                {{form.BMI(class='form-control form-control-lg input-box-space')}}
+            </div>
+
+            <div class='form-group'>
+                {{form.children.label(class='form-control-label label-size')}}
+                {{form.children(class='form-control form-control-lg input-box-space')}}
+            </div>
+
+            <div class='form-group'>
+                {{form.Smoke.label(class='form-control-label label-size')}}
+                {{form.Smoke(class='form-control form-control-lg input-box-space')}}
+            </div>
+
+            <div class='form-group'>
+                {{form.claim.label(class='form-control-label label-size')}}
+                {{form.claim(class='form-control form-control-lg input-box-space')}}
+            </div>
+
+            <div class='form-group'>
+                {{form.Hospital.label(class='form-control-label label-size')}}
+                {{form.Hospital(class='form-control form-control-lg input-box-space')}}
+            </div>
+
+            <div class='form-group'>
+                {{form.hopitalization.label(class='form-control-label label-size')}}
+                {{form.hopitalization(class='form-control form-control-lg input-box-space')}}
+            </div>
+
+            <div class='form-group'>
+                {{form.Salary.label(class='form-control-label label-size')}}
+                {{form.Salary(class='form-control form-control-lg input-box-space')}}
+            </div>
+
+            <div class='form-group'>
+                {{form.region.label(class='form-control-label label-size')}}
+
+                <select class='scrollable-multi-select' multiple='multiple' name='multi_option'>
+                    {% for value, label in form.region.choices %}
+                        <option value="{{value}}"> {{label}} </option>
+                    {% endfor %}
+
+                </select>
+
+                <!--{{form.region(class='form-control form-control-lg input-box-space')}}-->
+            </div>
+
+
+        </fieldset>
+    </form>
+
+</div>
+{% endblock %}
