@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, url_for
+from flask import Flask, redirect, render_template, url_for, flash
 from .forms import CollectData
 app = Flask(__name__)
 
@@ -12,7 +12,22 @@ def home():
 def information():
     form = CollectData()
 
+    if form.validate_on_submit():
+        flash(f'Values were successfully Entered.', 'success')
+        print('form accepted')
+        return redirect(url_for('results'))
+
+    else:
+        for fieldname, errormsg in form.errors.items():
+            for err in errormsg:
+                print(f"The error in {fieldname} is {err}")
+
+
     return render_template('info.html', form = form)
+
+@app.route('/results')
+def results():
+    return "hello wolrd"
 
 
 if __name__ == "__main__":
