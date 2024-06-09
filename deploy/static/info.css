@@ -30,10 +30,15 @@
 }
 
 .scrollable-multi-select{
-    height: auto;
-    max-height: 100px;
     overflow-x: hidden;
     overflow-y: scroll;
+}
+
+.submit-btn-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 25px 0px;
 }
 
 
