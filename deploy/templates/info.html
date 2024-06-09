@@ -6,7 +6,7 @@
 
 <div class='content-section form-box'>
 
-    <form method='post' action='/'>
+    <form method='post'>
         {{ form.hidden_tag() }}
 
         <fieldset class='form-group'>
@@ -59,19 +59,15 @@
 
             <div class='form-group'>
                 {{form.region.label(class='form-control-label label-size')}}
-
-                <select class='scrollable-multi-select' multiple='multiple' name='multi_option'>
-                    {% for value, label in form.region.choices %}
-                        <option value="{{value}}"> {{label}} </option>
-                    {% endfor %}
-
+                {{form.region(class="form-control form-control-lg")}}
                 </select>
-
-                <!--{{form.region(class='form-control form-control-lg input-box-space')}}-->
             </div>
-
-
         </fieldset>
+
+        <div class='form-group submit-btn-box'>
+            {{ form.submit(class="btn btn-outline-info")}}
+        </div>
+
     </form>
 
 </div>
