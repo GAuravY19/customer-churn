@@ -272,6 +272,8 @@ class DataScaling:
                                        'Anual_Salary','northwest','southeast',
                                        'southwest','target']]
 
+            saveObject(region_encoder,'region_encoder.pkl')
+
             logging.info("Scaling of region column Completed.")
 
             return self.data_3
