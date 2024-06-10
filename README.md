@@ -5,7 +5,7 @@
 The Insurance Premium Calculator is a machine learning-based solution developed to accurately estimate insurance premiums for customers. This project, aims to streamline the process of premium calculation by leveraging ML algorithms to evaluate multiple factors that influence insurance costs. By incorporating a diverse range of customer data, such as age, health metrics and claim history, our model provides precise and fair premium estimates.
 
 <div style="float: right; width: 50%; margin-left: 20px;">
-  <img src="D:\customer-churn\customer-churn\README_IMAGES\insurance.jpeg" alt="Description of the image" style="height:300px;width: 100%;">
+  <img src="https://www.b4networks.ca/files/2020/07/insurance.jpeg" alt="Description of the image" style="height:300px;width: 100%;">
 </div>
 
 The primary objective of this project is to enhance the efficiency and accuracy of premium calculations, reducing the reliance on manual assessments and minimizing the risk of human error. This automated approach not only ensures consistency but also adapts to emerging trends and patterns in the data, allowing for continuous improvement in prediction accuracy.
