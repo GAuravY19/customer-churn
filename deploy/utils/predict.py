@@ -1,11 +1,9 @@
 import numpy as np
-
-import pickle
 import os
 import sys
 
 from src.utils.exceptions import CustomException
-from src.utils.logging import logging
+# from src.utils.logging import logging
 
 from pathlib import Path
 
@@ -17,7 +15,7 @@ class MakePrediction:
     """
 
     def __init__(self):
-        logging.info("Making prediction class initialized.")
+        # logging.info("Making prediction class initialized.")
         self.scalers_encoders_file_path = Path(r'D:\customer-churn\customer-churn\artifacts\scalers&encoders')
         self.model_file_path = Path(r'D:\customer-churn\customer-churn\artifacts\model')
 
@@ -34,16 +32,14 @@ class MakePrediction:
         self.gender_encoder_path = os.path.join(self.scalers_encoders_file_path, 'sex_encoder.pkl')
         self.smoker_encoder_path = os.path.join(self.scalers_encoders_file_path, 'smoker_encoder.pkl')
         self.model_path = os.path.join(self.model_file_path, 'model.pkl')
-        print(self.model_path)
-
 
     def LoadScalerandEncoder(self):
         """
             This method loads the scaler and encoder for scaling and encoding the data values.
         """
-        logging.info("Inside LoadScalerandEncoder method.")
+        # logging.info("Inside LoadScalerandEncoder method.")
         try:
-            logging.info("Loading of scaler and encoder started.")
+            # logging.info("Loading of scaler and encoder started.")
 
             self.AGE = load_pkl_file(self.age_scaler_path)
             self.ANNUAL_SALARY = load_pkl_file(self.annual_salary_path)
@@ -56,24 +52,24 @@ class MakePrediction:
             self.GENDER = load_pkl_file(self.gender_encoder_path)
             self.SMOKER = load_pkl_file(self.smoker_encoder_path)
 
-            logging.info("Loading of scaler and encoder completed.")
+            # logging.info("Loading of scaler and encoder completed.")
 
         except Exception as e:
-            logging.info("Loading of scaler and encoder failed.")
+            # logging.info("Loading of scaler and encoder failed.")
             raise CustomException(e, sys)
 
     def LoadModel(self):
         """
             This method loads the model.
         """
-        logging.info("Inside LoadModel method.")
+        # logging.info("Inside LoadModel method.")
         try:
-            logging.info("Loading of scaler and encoder started.")
+            # logging.info("Loading of scaler and encoder started.")
             self.MODEL = load_pkl_file(self.model_path)
-            logging.info("Loading of scaler and encoder completed.")
+            # logging.info("Loading of scaler and encoder completed.")
 
         except Exception as e:
-            logging.info("Loading of scaler and encoder failed.")
+            # logging.info("Loading of scaler and encoder failed.")
             raise CustomException(e, sys)
 
 
@@ -98,9 +94,9 @@ class MakePrediction:
         Returns:
             float: The predicted value based on the input parameters.
         """
-        logging.info("Inside PredictValue method.")
+        # logging.info("Inside PredictValue method.")
         try:
-            logging.info("Making prediction started.")
+            # logging.info("Making prediction started.")
             final_age = self.AGE.transform([[age]])
             final_anl_sal = self.ANNUAL_SALARY.transform([[anl_sal]])
             final_bmi = self.BMI.transform([[bmi]])
@@ -122,20 +118,16 @@ class MakePrediction:
             self.x[7] = final_num_hos
             self.x[8] = final_anl_sal
 
-            final_region = ['northwest', 'southeast', 'southwest']
-
-            reg_ind = final_region.index(region)
-
-            self.x[reg_ind + 9] = 1
+            final_region = ['northwest','southeast','southwest']
+            if region in final_region:
+                reg_ind = final_region.index(region[0])
+                self.x[reg_ind + 9] = 1
 
             prediction = self.MODEL.predict([self.x])
-            logging.info("Making prediction complete.")
+            # logging.info("Making prediction complete.")
 
             return prediction
 
         except Exception as e:
-            logging.info("Making prediction failed.")
+            # logging.info("Making prediction failed.")
             raise CustomException(e, sys)
-
-print('Ran successfully')
-
