@@ -1,0 +1,20 @@
+{% extends "index.html" %}
+
+{% block title %} Premium {% endblock %}
+
+{% block body %}
+
+<!--<h1>{{predicted_value}}<h1>-->
+
+<div class='result-box'>
+    <section class='imgsection'>
+        <img src='{{url_for("static", filename = "images/premium.jpg")}}'>
+    </section>
+
+    <section class='finalvalue'>
+        <p> You total Premium is {{ predicted_value }} ($) </p>
+    </section>
+</div>
+
+
+{% endblock %}
