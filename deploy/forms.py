@@ -25,16 +25,16 @@ class CollectData(FlaskForm):
                                  ('no', 'No')],
                         validators=[DataRequired()])
 
-    claim = IntegerField("Claim Amount($)",
+    claim = FloatField("Claim Amount($)",
                          validators=[DataRequired()])
 
-    Hospital = IntegerField("Hospital Expenditure($)",
+    Hospital = FloatField("Hospital Expenditure($)",
                             validators=[DataRequired()])
 
     hopitalization = IntegerField("Number of Past Hospitalization",
-                                  validators=[DataRequired()])
+                                  validators=[InputRequired()])
 
-    Salary = IntegerField("Annual Salary($)",
+    Salary = FloatField("Annual Salary($)",
                           validators=[DataRequired()])
 
     region = SelectMultipleField('Select Your region',
